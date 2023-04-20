@@ -1,19 +1,23 @@
 #!/usr/bin/python3
+'''Module to return pascal triangle'''
 
-function pascal(rows) {
-  if (rows === 1) {
-    return [[1]];
-  }
-if (rows === 0) {
-    return [];
-  }
-  const prev = pascal(rows - 1);
-  const last = prev[prev.length - 1];
-  const next = [1];
-  for (let i = 0; i < last.length - 1; i++) {
-    next.push(last[i] + last[i + 1]);
-  }
-  next.push(1);
-  prev.push(next);
-  return prev;
-}
+
+def pascal_triangle(n):
+    '''
+    Pascal's triangle
+    Args:
+      n (int): The number of rows of the triangle
+    Returns:
+      List of lists of integers representing the Pascal’s triangle
+    '''
+    lists = []
+    if n == 0:
+        return lists
+    for i in range(n):
+        lists.append([])
+        lists[i].append(1)
+        if (i > 0):
+            for j in range(1, i):
+                lists[i].append(lists[i - 1][j - 1] + lists[i - 1][j])
+            lists[i].append(1)
+    return lists
