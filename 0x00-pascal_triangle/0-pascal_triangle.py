@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 function pascal(rows) {
   if (rows === 1) {
     return [[1]];
